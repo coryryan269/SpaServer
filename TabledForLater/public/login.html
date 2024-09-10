@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    
+    <label for="username">USER ID</label>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="password">PASSWORD</label>
+    <input type="password" id="password" name="password"><br><br>
+    <button onclick="requestAuth()">LOGIN</button>
+
+    <div id="response"></div>
+    <script src="crypto-js.min.js"></script>
+    <script>
+        
+
+        let results = {};
+        function requestAuth(){
+            // const encryptedPassword = CryptoJS.AES.encrypt(document.getElementById("password").value, pub).toString();
+            fetch('requestAuthTokenCustomer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'username' : document.getElementById("username").value
+            },
+            body: JSON.stringify({
+                username: document.getElementById("username").value,
+                request: "authenticationkey"
+            })
+            })
+            .then(response => response.text())
+            .then(data => {
+                results = data;
+            });
+        }   
+    </script>
+</body>
+</html>
