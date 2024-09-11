@@ -15,12 +15,27 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-
 // QUERY TEMPLATE
 app.get('/query', async (req, res) => {
   try {
+    
       const client = await pool.connect();
-      let result = await client.query(req);
+      let result = await client.query(req.headers.query);
+      let queryCommand = result.queryCommand;
+      switch (queryCommand) {
+        case "editEmployee":
+          editEmployee(result);
+          break;
+        case "editCustomer":
+          // Code to execute if expression equals value2
+          break;   
+      
+        // ... more cases
+        default:
+          // Code to execute if expression doesn't match any case   
+      
+      }
+      
       res.send(result.rows);
       client.release();
       return result;
@@ -31,12 +46,12 @@ app.get('/query', async (req, res) => {
 });
 
 // BASIC QUERY FUNCTION
-async function executeQuery(query) {
+async function executeQuery(exQuery) {
     try {
         const client = await pool.connect();
-        const result = await client.query(query);
+        const result = await client.query(exQuery);
         client.release();
-        console.log("\n\n QUERY: " + query);
+        console.log("\n\n QUERY: " + exQuery);
         return (JSON.stringify(result));
     } catch (err) {
         console.error(err);
@@ -44,13 +59,7 @@ async function executeQuery(query) {
     }
 }
 
-// console.log(modTable.modEmployee.yoyoyo);
-executeQuery(modTable.modEmployee.editEmployee({employee_id: 121,firstname:'Killian', lastname: 'Jones'})).then( res => {
-    console.log(res);
-});
 
-// executeQuery("select employeepassword from employees where employee_id = 21;").then( res => {
-//     console.log(res);
-// });
-// console.log(modTable.modEmployee.findEmployee({firstname:'cory', lastname: 'anders'}));
-// executeQuery('select * from employees').then(result => {console.log((result));})
+function editEmployee(query){
+
+}
