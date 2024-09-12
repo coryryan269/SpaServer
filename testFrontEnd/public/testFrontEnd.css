@@ -1,0 +1,14 @@
+body {
+    background-color: #2f6c8f;
+    /* display: flex; */
+    /* flex-direction: column; */
+    
+}
+
+input {
+  columns: 45;
+}
+
+.keyInput {
+  background-color: #6dd6b1;
+}

@@ -22,19 +22,19 @@ app.get('/query', async (req, res) => {
       const client = await pool.connect();
       let result = await client.query(req.headers.query);
       let queryCommand = result.queryCommand;
-      switch (queryCommand) {
-        case "editEmployee":
-          editEmployee(result);
-          break;
-        case "editCustomer":
-          // Code to execute if expression equals value2
-          break;   
+      // switch (queryCommand) {
+      //   case "requestToken":
+      //     requestToken(result);
+      //     break;
+      //   case "editCustomer":
+      //     // Code to execute if expression equals value2
+      //     break;   
       
-        // ... more cases
-        default:
-          // Code to execute if expression doesn't match any case   
+      //   // ... more cases
+      //   default:
+      //     // Code to execute if expression doesn't match any case   
       
-      }
+      // }
       
       res.send(result.rows);
       client.release();
@@ -60,6 +60,6 @@ async function executeQuery(exQuery) {
 }
 
 
-function editEmployee(query){
-
+function requestToken(result){
+    
 }
