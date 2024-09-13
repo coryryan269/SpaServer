@@ -63,3 +63,15 @@ app.get('/query', async (req, res) => {
       res.status(500).send('Error executing query');
   }
 });
+
+// Crypto Client Side JS
+app.get('/cryptoMin.js', async (req, res) => {
+  try {
+      res.sendFile(path.join(__dirname,"/cryptoMin.js"));
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Error executing query');
+  }
+});
+
+

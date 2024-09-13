@@ -1,6 +1,7 @@
 "use strict";
 
 // START UP ROUTINES
+function ref(elementID){return document.getElementById(elementID);}
 let startUpRoutine = () => {
     let counter = 0;
     let mainDivs = document.getElementsByClassName("main-display");
@@ -12,7 +13,7 @@ let startUpRoutine = () => {
         counter = counter + 1;
     }
     // counter, mainDivs = null;
-    function ref(elementID){return document.getElementById(elementID);}
+    
     function hideMainDivs(){
         counter = 0;
         for (let div in mainDivs){
