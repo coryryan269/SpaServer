@@ -65,6 +65,26 @@ function sendNetworkRequest(headers) {
   
     xhr.send();
   }
+
+ref("prefillKeys").addEventListener('change', () => {
+    switch(ref("prefillKeys").value){
+      case "employeeAdd":
+        ref('key1').value = 'authToken';
+        ref('key2').value = "actionType";
+        ref('key3').value = "firstname";
+        ref('key4').value = "lastname";
+        ref('key5').value = "dateofbirth";
+        ref('key6').value = "addressnumberandstreet";
+        ref('key7').value = "addresscity";
+        break;
+      default:
+        console.log(this.value);
+        break;
+    }
+});
+
+
+
 //   let encrypt = new JSEncrypt();
 // function encryptTraffic(dataToEncrypt){
     

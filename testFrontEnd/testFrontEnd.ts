@@ -54,7 +54,7 @@ app.get('/testFrontEnd.js', async (req, res) => {
   }
 });
 
-// Portal PAGE TS
+// Get /query
 app.get('/query', async (req, res) => {
   try {
       res.send(req.headers.query);
@@ -75,13 +75,5 @@ app.get('/cryptoMin.js', async (req, res) => {
 });
 
 
-// // Portal PAGE TS
-// app.get('/queryTest', async (req, res) => {
-//   try {
-//       res.send(req.headers.password);
-//   } catch (err) {
-//       console.error(err);
-//       res.status(500).send('Error executing query');
-//   }
-// });
+
 
