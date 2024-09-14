@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const port = 5433; // For requests directed to this server
 const modTable = require("../utils/index.ts"); // modTable provides query strings
+const CryptoJS = require('crypto-js');
 
 // const CryptoJS = require("crypto-js")
 app.use(express.static('public'));
@@ -22,19 +23,33 @@ app.get('/query', async (req, res) => {
       const client = await pool.connect();
       let result = await client.query(req.headers.query);
       let queryCommand = result.queryCommand;
-      // switch (queryCommand) {
-      //   case "requestToken":
-      //     requestToken(result);
-      //     break;
-      //   case "editCustomer":
-      //     // Code to execute if expression equals value2
-      //     break;   
+      switch (queryCommand) {
+        case "requestToken":
+        //   requestToken(result);
+          break;
+        case "editCustomer":
+          // Code to execute if expression equals value2
+          break;   
+        case "addCustomer":
+        // Code to execute if expression equals value2
+        break; 
+        case "editEmployee":
+        // Code to execute if expression equals value2
+        break; 
+        case "addEmployee":
+        // Code to execute if expression equals value2
+        break; 
+        case "editEmployeeSchedule":
+        // Code to execute if expression equals value2
+        break; 
+        case "editCustomer":
+        // Code to execute if expression equals value2
+        break; 
+        // ... more cases
+        default:
+          // Code to execute if expression doesn't match any case   
       
-      //   // ... more cases
-      //   default:
-      //     // Code to execute if expression doesn't match any case   
-      
-      // }
+      }
       
       res.send(result.rows);
       client.release();
@@ -60,6 +75,18 @@ async function executeQuery(exQuery) {
 }
 
 
-function requestToken(result){
-    
+function decryptData(dataToDecrypt){
+    // Assuming you have the private key in base64 format
+  const privateKeyBase64 = "YOUR_PRIVATE_KEY_IN_BASE64";
+
+  // Convert the base64 private key to a CryptoJS.RSAKey object
+  const privateKey = CryptoJS.RSA.importPrivateKey(privateKeyBase64, { format: CryptoJS.format.OpenSSL });
+
+  // Decrypt the data
+  const decryptedData = CryptoJS.RSA.decrypt(dataToDecrypt, privateKey, { format: CryptoJS.format.OpenSSL });
+
+  console.log("Decrypted data:", decryptedData.toString());
 }
+
+
+

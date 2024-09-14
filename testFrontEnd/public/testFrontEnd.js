@@ -1,4 +1,5 @@
 "use strict";
+// const CryptoJS = require('crypto-js');
 function ref(id) {return document.getElementById(id);}
 
 ref("submit").addEventListener('click', networkRequestWrapper);
@@ -44,11 +45,11 @@ function networkRequestWrapper(){
 function sendNetworkRequest(headers) {
     const xhr = new XMLHttpRequest();
   
-    xhr.open("GET", "/query", true);
+    xhr.open("GET", "/queryTest", true);
   
     // Set the specified headers
     for (const header in headers) {
-      xhr.setRequestHeader(header, headers[header]);
+      xhr.setRequestHeader(header, (headers[header]));
     }
   
     xhr.onreadystatechange = function() {
@@ -64,4 +65,14 @@ function sendNetworkRequest(headers) {
   
     xhr.send();
   }
+//   let encrypt = new JSEncrypt();
+// function encryptTraffic(dataToEncrypt){
+    
+//     encrypt.setPublicKey("-----BEGIN PUBLIC KEY-----AAAAB3NzaC1yc2EAAAADAQABAAACAQDF5nPHrf1waWmBHQ70/d5KbXxorne441+j0n0aqJ+VoLDfGiUJq9xOxylEPpkK9TUDgoQUEfcOTp0CfBh0YDdNrWeK8ZX4cc8xqGw/De+GUMEcGCq+9Z89hF0ogyl+8eWXBHVw6Vhc4wGyratA7JoTpQRxhUXlsUVB0L61MmjdoLQe9wLxPfN76T1BYT7uAw2Ul0o+asl+W+svL5/93BZYeGC53AhyCIPPR4RzuXVbkEa527algnpGmxidZ+7Nl4/nEc1u2wunT1Ii2mPjE+UXsuBCMJzf4CNVLP7uKnM5jqwE11YC/vMDFojUTzj1uDPc2r7Jx3zphjDYByVMGAYhMD/mCo2a+N3Q54YlwjijUvmDZIsgDU1CMNSJU6OmnOhOKjOHQlFcV1y6ovokoUAf4FEXMQxzQACUfEFnyrY3PtZ/j+p1oaAR5/S+/OKzuNdNTiRFCArxBf4xpSazo+wC3LgLX2TN3SnGWXRAIUFaG8JgxURnyxGdmPZzYLkW0EVmzA6w1rhj5zbo1cDfkmTFQTPmYBZiB0L0G8/QHfSZYD90A4IjYk5uf3U2iBc2DZ6QtKomUXUB5UZ+iKNrpfm7yXKOFR+/ZcmUSFPiQNE387Enmc3ugWakTEUFNIwqNryiJSSk/xWn9gxxTGopeSennN9ZLae7m53UNygNdaaSMw==-----END PUBLIC KEY-----");
 
+//     // Encrypt Data
+//     let encryptedData = encrypt.encrypt(dataToEncrypt);
+//     console.log(encryptedData);
+//     // The encrypted data will be in base64 format
+//     return encryptedData;
+// }

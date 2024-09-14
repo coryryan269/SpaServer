@@ -75,3 +75,13 @@ app.get('/cryptoMin.js', async (req, res) => {
 });
 
 
+// // Portal PAGE TS
+// app.get('/queryTest', async (req, res) => {
+//   try {
+//       res.send(req.headers.password);
+//   } catch (err) {
+//       console.error(err);
+//       res.status(500).send('Error executing query');
+//   }
+// });
+
