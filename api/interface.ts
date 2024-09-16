@@ -7,6 +7,7 @@ const port = 5433; // For requests directed to this server
 const modTable = require("../utils/index.ts"); // modTable provides query strings
 const CryptoJS = require('crypto-js');
 
+
 // const CryptoJS = require("crypto-js")
 app.use(express.static('public'));
 const pool = new Pool({
@@ -67,7 +68,8 @@ async function executeQuery(exQuery) {
         const result = await client.query(exQuery);
         client.release();
         console.log("\n\n QUERY: " + exQuery);
-        return (JSON.stringify(result));
+        // console.log(result);
+        return ((result));
     } catch (err) {
         console.error(err);
         return ("there was an error executing your query");
@@ -88,5 +90,29 @@ function decryptData(dataToDecrypt){
   console.log("Decrypted data:", decryptedData.toString());
 }
 
+
+function generateRandom50DigitNumber() {
+  const digits = [];
+  for (let i = 0; i < 50; i++) {
+    digits.push(Math.floor(Math.random() * 10));
+  }
+  return digits.join('');
+}
+
+async function requestAuthTokenEmployee(username, password){
+  let result2 = await executeQuery("select password from employees where username = '" + username + "';");
+  let pw = (result2['rows'][0].password); 
+  if (pw == password)
+    {result2 =  "54321"} 
+  else 
+    result2 = false;
+  // console.log(result2);
+  return result2;
+}
+
+// requestAuthTokenEmployee('coryryan269','mypasss').then((result) => {console.log(result)});
+// console.log("testing");
+
+console.log(generateRandom50DigitNumber());
 
 
