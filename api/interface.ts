@@ -99,20 +99,20 @@ function generateRandom50DigitNumber() {
   return digits.join('');
 }
 
-async function requestAuthTokenEmployee(username, password){
-  let result2 = await executeQuery("select password from employees where username = '" + username + "';");
-  let pw = (result2['rows'][0].password); 
-  if (pw == password)
-    {result2 =  "54321"} 
-  else 
-    result2 = false;
-  // console.log(result2);
-  return result2;
+async function requestAuthTokenEmployee(username, password, ){
+  // look for employee with username
+  // if none, return false
+  // else if password associated with username is same as passed password, generate
+    // authToken
+  // if username and password match, return {authtoken, username} and log entry to SQL server authTable
+  // log sec-ch-ua-mobile to show if mobile experience prefered
+  // log "sec-ch-ua-platform"
+  // log "accept-language"
 }
 
-// requestAuthTokenEmployee('coryryan269','mypasss').then((result) => {console.log(result)});
+requestAuthTokenEmployee('coryryan269','mypass').then((result) => {console.log(result)});
 // console.log("testing");
 
-console.log(generateRandom50DigitNumber());
+// console.log(generateRandom50DigitNumber());
 
 

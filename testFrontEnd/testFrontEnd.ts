@@ -76,3 +76,13 @@ app.get('/cryptoMin.js', async (req, res) => {
 
 
 
+// Get /query
+app.get('/queryTest', async (req, res) => {
+  try {
+      res.send(req.headers);
+      console.log(typeof(req.headers));
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Error executing query');
+  }
+});

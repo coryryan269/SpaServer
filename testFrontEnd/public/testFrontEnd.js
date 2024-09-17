@@ -78,7 +78,7 @@ ref("prefillKeys").addEventListener('change', () => {
         ref('key7').value = "addresscity";
         break;
       default:
-        console.log(this.value);
+        console.log(ref("prefillKeys").value);
         break;
     }
 });
